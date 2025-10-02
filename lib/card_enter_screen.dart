@@ -292,30 +292,27 @@ class _CardEnterScreenState extends State<CardEnterScreen> {
                   ],
                 ),
               ),
-              AnimatedOpacity(
-                duration: const Duration(milliseconds: 300),
-                opacity: indexStack != 1 ? 1.0 : 0.0,
-                child: ElevatedButton(
-                    onPressed: indexStack == 1
-                        ? null
-                        : () {
-                            if (indexStack == 0) {
-                              checkFields();
-                            } else {
-                              Navigator.of(context).pop(_wayForPayResponse);
-                            }
-                          },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      alignment: Alignment.center,
-                      height: 50,
-                      child: Text(
-                        indexStack == 0 ? 'Pay' : 'Go back',
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    )),
+              
+              ElevatedButton(
+                onPressed: indexStack == 1
+                    ? null
+                    : () {
+                  if (indexStack == 0) {
+                    checkFields();
+                  } else {
+                    Navigator.of(context).pop(_wayForPayResponse);
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // This sets the button color
+                  minimumSize: Size(double.infinity, 50), // width & height
+                ),
+                child: Text(
+                  indexStack == 0 ? 'Pay' : 'Go back',
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
               )
+
             ],
           ),
         ),
